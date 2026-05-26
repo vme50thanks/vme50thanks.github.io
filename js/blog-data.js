@@ -2,7 +2,7 @@
 const BLOG_POSTS = [
   {
     title: "我的第一篇博客",
-    date: "2025-05-20",
+    date: "2026-05-20",
     excerpt: "研究生阶段的学习记录由此开始，关于为什么要写博客以及会写些什么。",
     tags: ["思考"],
     url: "blog/my-first-post.html"
