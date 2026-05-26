@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     date: "2026-05-20",
     excerpt: "研究生阶段的学习记录由此开始，关于为什么要写博客以及会写些什么。",
     tags: ["思考"],
-    url: "blog/post.html?post=my-first-post.md"
+    url: "blog/post.html?post=第一篇博客.md"
   },
   // 以后每写一篇文章，在下面追加一条即可：
   // {
