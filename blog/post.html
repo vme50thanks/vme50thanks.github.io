@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>博客 — 常沙的主页</title>
+<title>博客 — 海棠的博客</title>
+<link rel="icon" type="image/jpeg" href="../pic/icon.jpg">
 <link rel="stylesheet" href="../css/style.css">
 <style>
   .article {
@@ -160,7 +161,7 @@
     fetch('../blog/' + postFile)
       .then(r => { if (!r.ok) throw new Error('Not found'); return r.text(); })
       .then(md => {
-        document.title = (meta ? meta.title + ' — ' : '') + '常沙的主页';
+        document.title = (meta ? meta.title + ' — ' : '') + '海棠的博客';
 
         const tagClassMap = {
           '前端': 'frontend', '后端': 'backend', 'DevOps': 'devops',
