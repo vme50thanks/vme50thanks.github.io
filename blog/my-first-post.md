@@ -19,17 +19,6 @@
 
 这个个人主页托管在 GitHub Pages 上，纯静态 HTML/CSS/JS 构建。没有花里胡哨的框架，简单、干净、加载快。后续会逐步完善，把更多文章放上来。
 
-## 代码示例
 
-```python
-def hello():
-    print("Hello, World!")
-```
-
-```javascript
-function greet(name) {
-  console.log(`你好, ${name}!`);
-}
-```
 
 感谢你的来访，希望这里的内容对你有帮助 🎉
