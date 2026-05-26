@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的个人主页</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="sakura-canvas"></canvas>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">常沙的主页</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#blog">博客</a></li>
+      <li><a href="#contact">联系</a></li>
+      <li><a href="#guestbook">留言</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-avatar"><img src="头像.jpg" alt="头像"></div>
+    <h1>你好，我是 <span style="color: var(--coral);">[常沙]</span></h1>
+    <p class="tagline">  学生 </p>
+    <p class="bio-brief">
+      忍耐，就是要想得开、挺得住！
+    </p>
+    <div class="hero-actions">
+      <a href="#blog" class="btn btn-primary">📖 阅读博客</a>
+      <a href="#contact" class="btn btn-outline">💌 联系我</a>
+    </div>
+    <div class="scroll-hint">
+      <span>↓</span>
+      向下滚动探索
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>关于我</h2>
+      <span class="sub">了解我的故事与经历</span>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <h3><span class="icon">📝</span>个人简介</h3>
+        <p>
+          一名学生
+        </p>
+        <p style="margin-top:10px;">
+          仅以此来记录本人研究生期间的进展，时不时更新博客内容来督促自己不断进步
+        </p>
+        <p  style="margin-top:10px;">
+            感谢你的浏览
+        </p>
+      </div>
+      <div class="card about-timeline">
+        <h3><span class="icon">🌱</span>经历</h3>
+        <div class="item">
+          <div class="year">2022 - 2026</div>
+          <div class="desc">桂林电子科技大学 · 信息安全</div>
+        </div>
+        <div class="item">
+          <div class="year">2026 - 至今</div>
+          <div class="desc">桂林电子科技大学 · 网络空间安全</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog -->
+<section id="blog">
+  <div class="container">
+    <div class="section-title">
+      <h2>技术博客</h2>
+      <span class="sub">记录学习与思考的碎片</span>
+    </div>
+    <div class="blog-grid" id="blog-grid"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>联系我</h2>
+      <span class="sub">欢迎随时交流与沟通</span>
+    </div>
+    <div class="contact-grid">
+      <a href="https://github.com/" target="_blank" rel="noopener" class="contact-link">
+        <span class="contact-icon github">🐙</span> GitHub
+      </a>
+      <a href="mailto:your-email@example.com" class="contact-link">
+        <span class="contact-icon email">✉️</span> Email
+      </a>
+      <a href="#" class="contact-link" onclick="copyWechat(event)">
+        <span class="contact-icon wechat">💬</span> 微信
+      </a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener" class="contact-link">
+        <span class="contact-icon twitter">🐦</span> Twitter
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Guestbook -->
+<section id="guestbook">
+  <div class="container">
+    <div class="section-title">
+      <h2>留言板</h2>
+      <span class="sub">留下你的足迹，告诉我你来过</span>
+    </div>
+
+    <div class="guestbook-form">
+      <div class="form-row">
+        <input type="text" id="gb-name" placeholder="你的昵称" maxlength="30">
+        <input type="text" id="gb-email" placeholder="邮箱（选填）" maxlength="50">
+      </div>
+      <div class="form-row">
+        <textarea id="gb-message" placeholder="写下你想说的话..." maxlength="500"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" onclick="submitMessage()">🌸 留下足迹</button>
+      </div>
+    </div>
+
+    <div class="guestbook-messages" id="guestbook-messages"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>用 <span class="heart">❤</span> 构建 · &copy; 2025 我的个人主页 · Powered by GitHub Pages</p>
+</footer>
+
+<script src="js/blog-data.js"></script>
+<script src="js/sakura.js"></script>
+<script src="js/guestbook.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* ===== 动态渲染博客卡片 ===== */
+  (function() {
+    const grid = document.getElementById('blog-grid');
+    if (!BLOG_POSTS.length) {
+      grid.innerHTML = '<div class="guestbook-empty"><span class="empty-icon">📝</span>还没有文章，敬请期待~</div>';
+      return;
+    }
+    const tagClassMap = {
+      '前端': 'frontend', '后端': 'backend', 'DevOps': 'devops',
+      '教程': 'tutorial', '思考': 'thinking',
+    };
+    grid.innerHTML = BLOG_POSTS.map(post => `
+      <a href="${post.url}" class="blog-card">
+        <span class="blog-date">${post.date}</span>
+        <h4>${post.title}</h4>
+        <p>${post.excerpt}</p>
+        <div class="blog-tags">
+          ${post.tags.map(t => `<span class="blog-tag ${tagClassMap[t] || ''}">${t}</span>`).join('')}
+        </div>
+      </a>
+    `).join('');
+  })();
+</script>
+</body>
+</html>

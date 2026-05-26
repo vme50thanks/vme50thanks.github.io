@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的第一篇博客 — 常沙的主页</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 100px 24px 60px;
+  }
+  .article h1 {
+    font-size: 2rem;
+    color: var(--brown);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .article .meta {
+    color: var(--brown-lighter);
+    font-size: 0.88rem;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .article .meta .blog-tag {
+    font-size: 0.73rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .article .content {
+    font-size: 1rem;
+    color: var(--brown-light);
+    line-height: 2;
+  }
+  .article .content h2 {
+    font-size: 1.35rem;
+    color: var(--brown);
+    margin: 36px 0 14px;
+  }
+  .article .content h3 {
+    font-size: 1.1rem;
+    color: var(--brown);
+    margin: 28px 0 10px;
+  }
+  .article .content p { margin-bottom: 16px; }
+  .article .content code {
+    background: var(--warm-white);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--coral);
+  }
+  .article .content pre {
+    background: #2d2a27;
+    color: #f5e6d3;
+    padding: 20px 24px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 0.88rem;
+  }
+  .article .content pre code { background: none; padding: 0; color: inherit; }
+  .article .content blockquote {
+    border-left: 3px solid var(--coral-light);
+    padding: 8px 18px;
+    margin: 20px 0;
+    color: var(--brown-lighter);
+    background: var(--coral-pale);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .article .content ul, .article .content ol { margin-bottom: 16px; padding-left: 24px; }
+  .article .content li { margin-bottom: 6px; }
+  .article .content img {
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    margin: 16px 0;
+  }
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--brown-lighter);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    transition: color 0.2s;
+  }
+  .back-home:hover { color: var(--coral); }
+  @media (max-width: 768px) {
+    .article { padding: 80px 20px 40px; }
+    .article h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<canvas id="sakura-canvas"></canvas>
+
+<article class="article">
+  <a href="../index.html" class="back-home">← 返回主页</a>
+  <h1>我的第一篇博客</h1>
+  <div class="meta">
+    <span>📅 2026-05-20</span>
+    <span class="blog-tag thinking">思考</span>
+  </div>
+  <div class="content">
+
+    <p>你好，这是我的第一篇博客文章！</p>
+
+    <h2>为什么开始写博客</h2>
+    <p>
+      研究生阶段是一个需要大量输入和输出的时期。读论文、做实验、写代码——
+      很多时候学到的东西如果不及时整理，很快就会遗忘。写博客既是对自己学习的总结，
+      也是一种和外界交流的方式。
+    </p>
+
+    <h2>我会写什么</h2>
+    <p>这个博客主要会涉及以下几个方面：</p>
+    <ul>
+      <li><strong>网络空间安全</strong>：专业方向的学习笔记和论文阅读心得</li>
+      <li><strong>编程技术</strong>：日常开发中遇到的问题和解决方案</li>
+      <li><strong>工具分享</strong>：好用的开发工具、效率工具的推荐和教程</li>
+      <li><strong>杂谈随笔</strong>：研究生生活的碎碎念</li>
+    </ul>
+
+    <blockquote>
+      种一棵树最好的时间是十年前，其次是现在。写博客也是如此。
+    </blockquote>
+
+    <h2>关于这个网站</h2>
+    <p>
+      这个个人主页托管在 GitHub Pages 上，纯静态 HTML/CSS/JS 构建。
+      没有花里胡哨的框架，简单、干净、加载快。后续会逐步完善，把更多文章放上来。
+    </p>
+
+    <p>感谢你的来访，希望这里的内容对你有帮助 🎉</p>
+
+  </div>
+</article>
+
+<script src="../js/sakura.js"></script>
+</body>
+</html>
