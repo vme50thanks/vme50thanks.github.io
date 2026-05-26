@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>博客 — 常沙的主页</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 100px 24px 60px;
+  }
+  .article h1 {
+    font-size: 2rem;
+    color: var(--brown);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .article .meta {
+    color: var(--brown-lighter);
+    font-size: 0.88rem;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .article .meta .blog-tag {
+    font-size: 0.73rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .article .content {
+    font-size: 1rem;
+    color: var(--brown-light);
+    line-height: 2;
+  }
+  .article .content h2 {
+    font-size: 1.35rem;
+    color: var(--brown);
+    margin: 36px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0e6d8;
+  }
+  .article .content h3 {
+    font-size: 1.1rem;
+    color: var(--brown);
+    margin: 28px 0 10px;
+  }
+  .article .content p { margin-bottom: 16px; }
+  .article .content code {
+    background: var(--warm-white);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--coral);
+  }
+  .article .content pre {
+    background: #2d2a27;
+    color: #f5e6d3;
+    padding: 20px 24px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 0.88rem;
+  }
+  .article .content pre code {
+    background: none; padding: 0; color: inherit; font-size: inherit;
+  }
+  .article .content blockquote {
+    border-left: 3px solid var(--coral-light);
+    padding: 8px 18px;
+    margin: 20px 0;
+    color: var(--brown-lighter);
+    background: var(--coral-pale);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .article .content ul, .article .content ol {
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .article .content li { margin-bottom: 6px; }
+  .article .content img {
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    margin: 16px 0;
+  }
+  .article .content a {
+    color: var(--coral);
+    text-decoration: none;
+  }
+  .article .content a:hover { text-decoration: underline; }
+  .article .content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+  .article .content th, .article .content td {
+    border: 1px solid #f0e6d8;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .article .content th {
+    background: var(--warm-white);
+    font-weight: 600;
+    color: var(--brown);
+  }
+  .article .content strong { color: var(--brown); }
+  .article .loading {
+    text-align: center;
+    padding: 120px 20px;
+    color: var(--brown-lighter);
+    font-size: 1rem;
+  }
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--brown-lighter);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    transition: color 0.2s;
+  }
+  .back-home:hover { color: var(--coral); }
+  @media (max-width: 768px) {
+    .article { padding: 80px 20px 40px; }
+    .article h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<canvas id="sakura-canvas"></canvas>
+
+<article class="article">
+  <a href="../index.html" class="back-home">← 返回主页</a>
+  <div id="post-content" class="loading">📝 加载中……</div>
+</article>
+
+<script src="../js/blog-data.js"></script>
+<script src="../js/sakura.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const postFile = params.get('post');
+    const container = document.getElementById('post-content');
+
+    if (!postFile) {
+      container.innerHTML = '<div class="guestbook-empty"><span class="empty-icon">📭</span>未指定文章</div>';
+      return;
+    }
+
+    // Look for metadata in parent's BLOG_POSTS (injected via blog-data.js)
+    const meta = (window.BLOG_POSTS || []).find(p => p.url.includes(postFile));
+
+    fetch('../blog/' + postFile)
+      .then(r => { if (!r.ok) throw new Error('Not found'); return r.text(); })
+      .then(md => {
+        document.title = (meta ? meta.title + ' — ' : '') + '常沙的主页';
+
+        const tagClassMap = {
+          '前端': 'frontend', '后端': 'backend', 'DevOps': 'devops',
+          '教程': 'tutorial', '思考': 'thinking',
+        };
+
+        let metaHTML = '';
+        if (meta) {
+          metaHTML = `
+            <div class="meta">
+              <span>📅 ${meta.date}</span>
+              ${meta.tags.map(t => `<span class="blog-tag ${tagClassMap[t] || ''}">${t}</span>`).join('')}
+            </div>`;
+        }
+
+        container.innerHTML = `
+          <h1>${meta ? meta.title : postFile.replace('.md', '')}</h1>
+          ${metaHTML}
+          <div class="content">${marked.parse(md)}</div>
+        `;
+      })
+      .catch(() => {
+        container.innerHTML = '<div class="guestbook-empty"><span class="empty-icon">📭</span>文章未找到</div>';
+      });
+  })();
+</script>
+</body>
+</html>

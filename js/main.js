@@ -17,13 +17,3 @@
   });
 })();
 
-/* ===== WeChat copy ===== */
-function copyWechat(e) {
-  e.preventDefault();
-  const wechatId = 'your_wechat_id';
-  navigator.clipboard?.writeText(wechatId).then(() => {
-    alert('微信号已复制到剪贴板：' + wechatId);
-  }).catch(() => {
-    prompt('微信号：', wechatId);
-  });
-}

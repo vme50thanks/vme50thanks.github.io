@@ -386,24 +386,34 @@ section { padding: 80px 0; }
 /* ===== Contact ===== */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   background: var(--white);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
+  border-radius: var(--radius);
+  padding: 22px 26px;
   text-decoration: none;
   color: var(--brown);
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 550;
+  font-size: 0.95rem;
   box-shadow: var(--shadow-sm);
   border: 1px solid rgba(0,0,0,0.04);
   transition: all 0.3s ease;
+}
+.contact-link small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: var(--brown-lighter);
+  margin-top: 2px;
+  word-break: break-all;
 }
 .contact-link:hover {
   transform: translateY(-2px);
