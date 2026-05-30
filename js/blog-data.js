@@ -7,6 +7,13 @@ const BLOG_POSTS = [
     tags: ["思考"],
     url: "blog/post.html?post=第一篇博客.md"
   },
+  {
+    title: "李宏毅机器学习课程总结（一、二）",
+    date: "2026-05-30",
+    excerpt: "结合 LeeDL Tutorial 学习，梳理机器学习基础概念与实践方法论。",
+    tags: ["教程", "思考"],
+    url: "blog/post.html?post=机器学习一.md"
+  },
   // 以后每写一篇文章，在下面追加一条即可：
   // {
   //   title: "文章标题",
