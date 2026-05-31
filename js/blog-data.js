@@ -14,6 +14,13 @@ const BLOG_POSTS = [
     tags: ["教程", "思考"],
     url: "blog/post.html?post=机器学习一.md"
   },
+  {
+    title: "李宏毅机器学习课程总结（三、四）",
+    date: "2026-05-30",
+    excerpt: "深度学习基础与卷积神经网络，从局部极小值、鞍点、批量归一化到 CNN 核心思想。",
+    tags: ["教程", "思考"],
+    url: "blog/post.html?post=机器学习二.md"
+  },
   // 以后每写一篇文章，在下面追加一条即可：
   // {
   //   title: "文章标题",
