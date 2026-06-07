@@ -21,6 +21,13 @@ const BLOG_POSTS = [
     tags: ["教程", "思考"],
     url: "blog/post.html?post=机器学习二.md"
   },
+  {
+    title: "李宏毅机器学习课程总结（五、六）",
+    date: "2026-06-07",
+    excerpt: "循环神经网络 RNN 与序列数据处理，包含独热编码与词嵌入的入门理解。",
+    tags: ["教程", "思考"],
+    url: "blog/post.html?post=机器学习三.md"
+  },
   // 以后每写一篇文章，在下面追加一条即可：
   // {
   //   title: "文章标题",
