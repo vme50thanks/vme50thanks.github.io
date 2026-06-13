@@ -28,6 +28,13 @@ const BLOG_POSTS = [
     tags: ["教程", "思考"],
     url: "blog/post.html?post=机器学习三.md"
   },
+  {
+    title: "李宏毅机器学习课程总结（七、八）",
+    date: "2026-06-13",
+    excerpt: "Transformer 架构与自注意力机制，序列到序列模型的核心思路。",
+    tags: ["教程", "思考"],
+    url: "blog/post.html?post=机器学习四.md"
+  },
   // 以后每写一篇文章，在下面追加一条即可：
   // {
   //   title: "文章标题",
