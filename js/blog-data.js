@@ -35,6 +35,13 @@ const BLOG_POSTS = [
     tags: ["教程", "思考"],
     url: "blog/post.html?post=机器学习四.md"
   },
+  {
+    title: ".NET程序逆向与dnSpy初试",
+    date: "2026-06-13",
+    excerpt: "从逆向 ELF/PE 到 .NET 文件，使用 dnSpy 分析 .NET 程序的实战记录。",
+    tags: ["教程", "思考"],
+    url: "blog/post.html?post=一个简单的.net程序逆向.md"
+  },
   // 以后每写一篇文章，在下面追加一条即可：
   // {
   //   title: "文章标题",
