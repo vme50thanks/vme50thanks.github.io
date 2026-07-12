@@ -381,8 +381,7 @@ section { padding: 80px 0; }
 .blog-tag.backend  { background: var(--sage-pale); color: #6b8f6e; }
 .blog-tag.devops   { background: #fef3d5;      color: #b8935a; }
 .blog-tag.tutorial { background: #e8f0fe;      color: #6b8ab5; }
-.blog-tag.study   { background: #e8f0fe; color: #6b8ab5; }
-.blog-tag.note    { background: #fef3d5; color: #b8935a; }
+.blog-tag.thinking { background: var(--coral-pale); color: #c98b6a; }
 
 /* ===== Contact ===== */
 .contact-grid {
