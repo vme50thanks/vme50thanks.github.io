@@ -37,7 +37,7 @@ const BLOG_POSTS = [
   },
   {
     title: ".NET程序逆向与dnSpy初试",
-    date: "2026-06-13",
+    date: "2026-07-12",
     excerpt: "从逆向 ELF/PE 到 .NET 文件，使用 dnSpy 分析 .NET 程序的实战记录。",
     tags: ["教程", "思考"],
     url: "blog/post.html?post=一个简单的.net程序逆向.md"
